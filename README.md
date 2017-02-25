@@ -1,28 +1,28 @@
-#**Finding Lane Lines on the Road** 
+##Finding Lane Lines on the Road 
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
 <img src="laneLines_thirdPass.jpg" width="480" alt="Combined Image" />
-**Reflection**
-**Pipeline Description/Algorithm**
-*Gray scale image
-*Blur image to remove noise and make edge detection more accurate
-*Apply canny edge detection to get candidate edge points
-*Create mask of interested area
-*Get masked candidates from mask
-*Use hough transform to detect lines from candidate points
-*Divide candidate lines into two lanes by sign of gradients(lane lines move in opposite direction); also calculate y intercept
-    *positive gradients in one lane and negative in the other with their intercepts 
-    *Average out a single value for gradients and intercepts (used p50)
-    *if there are no candidates in either; make best guess(for now, best guess for gradient1 is -gradient2 and best        guess for y intercept1 is height_of_image - intercept2 i.e assumed same distance from origin but in opposite          directions
-*Calculate the interesecting points for both lines; and calculate x when y is heigh_of_image(i.e bottom of screen).These three points(triangle) form our lines/lanes
+## Reflection
+### Pipeline Description/Algorithm
+* Gray scale image
+* Blur image to remove noise and make edge detection more accurate
+* Apply canny edge detection to get candidate edge points
+* Create mask of interested area
+* Get masked candidates from mask
+* Use hough transform to detect lines from candidate points
+* Divide candidate lines into two lanes by sign of gradients(lane lines move in opposite direction); also calculate y intercept
+	* positive gradients in one lane and negative in the other with their intercepts 
+	* Average out a single value for gradients and intercepts (used p50)
+	* if there are no candidates in either; make best guess(for now, best guess for gradient1 is -gradient2 and best        guess for y intercept1 is height_of_image - intercept2 i.e assumed same distance from origin but in opposite          directions
+* Calculate the interesecting points for both lines; and calculate x when y is heigh_of_image(i.e bottom of screen).These three points(triangle) form our lines/lanes
 
-**Shortcomings**
-*It doesn't work great for the challenge video because lines are not as visible and masked area is a bit different from previous videos
-*There's not much to work with when we can detect any lines for a lane
+###Shortcomings
+* It doesn't work great for the challenge video because lines are not as visible and masked area is a bit different from previous videos
+* There's not much to work with when we can detect any lines for a lane
 
-**Possible Improvements**
-*Generally, the ability to make better guesses by using the information from previous frames; the lines can only change so much between frames
-*Better masked area and edge detections
+###Possible Improvements
+* Generally, the ability to make better guesses by using the information from previous frames; the lines can only change so much between frames
+* Better masked area and edge detections
 Overview
 ---
 
